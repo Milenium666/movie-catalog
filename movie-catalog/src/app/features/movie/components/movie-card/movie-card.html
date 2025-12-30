@@ -1,4 +1,4 @@
-<div class="movie-card" (click)="toggleExpanded()">
+<div class="movie-card" (click)="onCardClick()">
   <div class="movie-card__basic">
     <img [src]="movie.poster" alt="{{ movie.title }} poster" class="movie-card__poster">
     <div class="movie-card__info">
@@ -6,12 +6,4 @@
       <p class="movie-card__year">{{ movie.year }}</p>
     </div>
   </div>
-
-  @if (expanded) {
-  <div class="movie-card__expanded">
-    <p class="movie-card__genres"><strong>Genres:</strong> {{ movie.genres.join(', ') }}</p>
-    <p class="movie-card__description">{{ movie.description }}</p>
-    <p class="movie-card__rating"><strong>Rating:</strong> {{ movie.rating }}/10</p>
-  </div>
-  }
 </div>

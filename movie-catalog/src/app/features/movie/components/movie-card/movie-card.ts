@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Movie } from '../../models/movie.interface';
@@ -11,9 +11,9 @@ import { Movie } from '../../models/movie.interface';
 })
 export class MovieCard {
   @Input() movie!:  Movie;
-  expanded = false;
+  @Output() movieClick = new EventEmitter<Movie>();
 
-  toggleExpanded() {
-    this.expanded = !this.expanded;
+  onCardClick() {
+    this.movieClick.emit(this.movie);
   }
 }

@@ -1,0 +1,37 @@
+@if (isOpen) {
+<div class="movie-detail-modal" 
+     (click)="onBackdropClick($event)"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="movie-detail-modal__title"
+     aria-describedby="movie-detail-modal__description">
+  <div class="movie-detail-modal__content" 
+       #modalContent
+       tabindex="-1"
+       (click)="$event.stopPropagation()">
+    <button class="movie-detail-modal__close" 
+            (click)="onClose()"
+            aria-label="Закрыть модальное окно"
+            type="button">&times;</button>
+    <div class="movie-detail-modal__body">
+      <div class="movie-detail-modal__poster">
+        <img [src]="movie.poster" 
+             [alt]="movie.title + ' poster'" 
+             class="movie-detail-modal__poster-image"
+             loading="lazy">
+      </div>
+      <div class="movie-detail-modal__details">
+        <h1 class="movie-detail-modal__title" id="movie-detail-modal__title">{{ movie.title }}</h1>
+        <p class="movie-detail-modal__year">{{ movie.year }}</p>
+        <div class="movie-detail-modal__genres" role="list">
+          @for (genre of movie.genres; track genre) {
+          <span class="movie-detail-modal__genre-tag" role="listitem">{{ genre }}</span>
+          }
+        </div>
+        <p class="movie-detail-modal__description" id="movie-detail-modal__description">{{ movie.description }}</p>
+        <div class="movie-detail-modal__rating" aria-label="Рейтинг фильма">{{ movie.rating }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+}
