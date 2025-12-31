@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, WritableSignal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header {}
+export class Header {
+  @Input() searchQuery!: WritableSignal<string>;
+
+  onSearchChange(value: string) {
+    this.searchQuery.set(value);
+  }
+}

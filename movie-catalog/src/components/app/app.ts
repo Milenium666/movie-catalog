@@ -10,4 +10,5 @@ import { MovieList } from '../../app/features/movie/components/movie-list/movie-
 })
 export class App {
   protected readonly title = signal('movie-catalog');
+  searchQuery = signal<string>('');
 }
